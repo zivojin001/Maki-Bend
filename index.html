@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maki Bend - Rezervacija</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('images/pozadina.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      min-height: 100vh;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    section {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: none;
+      background: #f4f4f4;
+      color: #000;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #e63946;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .thumb {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin: 10px 10px 0 0;
+      border-radius: 8px;
+      border: 2px solid #fff;
+    }
+    .info-block {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .welcome-message {
+      font-size: 18px;
+      color: #a4f2b1;
+      margin-top: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>🎶 Maki Bend - Rezervacija</h1>
+
+    <!-- Prvi deo forme -->
+    <section id="step1">
+      <h2>📩 Pošaljite upit</h2>
+      <label for="userName">Vaše ime</label>
+      <input type="text" id="userName" required />
+
+      <label for="userPhone">Vaš broj telefona</label>
+      <input type="tel" id="userPhone" required />
+
+      <label for="userMessage">Poruka</label>
+      <textarea id="userMessage" rows="4" required></textarea>
+
+      <button id="continueBtn">Sledeće</button>
+    </section>
+
+    <!-- Drugi deo stranice - podaci o bendu -->
+    <section id="step2" style="display:none">
+      <h2>✅ Informacije o bendu</h2>
+
+      <div class="welcome-message">
+        Dobro došli, želimo vam srećno veselje!
+      </div>
+
+      <div class="info-block">
+        <p><strong>Vaše ime:</strong> <span id="previewName"></span></p>
+        <p><strong>Vaš broj:</strong> <span id="previewPhone"></span></p>
+        <p><strong>Vaša poruka:</strong> <span id="previewMessage"></span></p>
+      </div>
+
+      <div class="info-block">
+        <p><strong>🎤 Glavni muzičar:</strong> Marcel</p>
+        <p><strong>📞 Telefon muzičara:</strong> +381 64 123 4567</p>
+        <p><strong>📍 Lokacija:</strong> Beograd, Srbija</p>
+        <p><strong>🎵 Članovi benda:</strong></p>
+        <ul>
+          <li>Marcel – Vokal, klavijatura</li>
+          <li>Ivana – Violina</li>
+          <li>Stefan – Bubnjevi</li>
+          <li>Marko – Gitara</li>
+        </ul>
+        <p><strong>🎼 Opis:</strong> Maki Bend je sastav koji donosi nezaboravnu atmosferu na svako veselje, sviramo uživo, sve žanrove – narodnu, zabavnu, pop i rock muziku.</p>
+      </div>
+
+      <p><strong>📸 Slike benda:</strong></p>
+      <div>
+        <img src="images/bend1.jpg" alt="Bend slika 1" class="thumb">
+        <img src="images/bend2.jpg" alt="Bend slika 2" class="thumb">
+        <img src="images/bend3.jpg" alt="Bend slika 3" class="thumb">
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.getElementById('continueBtn').addEventListener('click', () => {
+      const name = document.getElementById('userName').value.trim();
+      const phone = document.getElementById('userPhone').value.trim();
+      const message = document.getElementById('userMessage').value.trim();
+
+      if (!name || !phone || !message) {
+        alert('Molimo popunite sva polja.');
+        return;
+      }
+
+      // Popuni podatke na drugoj strani
+      document.getElementById('previewName').textContent = name;
+      document.getElementById('previewPhone').textContent = phone;
+      document.getElementById('previewMessage').textContent = message;
+
+      // Sakrij prvi korak, prikaži drugi
+      document.getElementById('step1').style.display = 'none';
+      document.getElementById('step2').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
