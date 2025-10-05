@@ -139,218 +139,143 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Maki Bend — Kontakt / Booking</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maki Bend - Rezervacija</title>
   <style>
-    :root {
-      --accent: #e63946;
-      --bg-overlay: rgba(0, 0, 0, 0.65);
-      --card-bg: rgba(0, 0, 0, 0.55);
-      --text: #fff;
-      --radius: 10px;
-      --maxw: 920px;
-    }
-    * { box-sizing: border-box }
-    body, html {
-      height: 100%;
+    body {
       margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      color: var(--text);
-      background-image: url('images/pozadina.jpg');
+      font-family: Arial, sans-serif;
+      background: url('images/pozadina.jpg') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      color: white;
     }
     .overlay {
-      position: fixed;
-      inset: 0;
-      background: var(--bg-overlay);
-      z-index: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      min-height: 100vh;
     }
-    .wrap {
-      position: relative;
-      z-index: 10;
-      max-width: var(--maxw);
-      margin: 40px auto;
-      padding: 28px;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.65));
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    h1, h2 {
+      text-align: center;
     }
-    header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px }
-    .logo {
-      width: 72px;
-      height: 72px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 20px;
-    }
-    h1 { font-size: 28px; margin: 0 }
-    p.lead { margin: 8px 0 20px; color: #ddd }
-    form {
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 20px;
-    }
-    @media(max-width:880px){ form { grid-template-columns: 1fr } }
-    .card {
-      background: var(--card-bg);
-      padding: 18px;
+    section {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
       border-radius: 10px;
     }
     label {
       display: block;
-      font-weight: 600;
-      margin-bottom: 6px;
-      font-size: 0.95rem;
+      margin-top: 15px;
+      font-weight: bold;
     }
     input, textarea {
       width: 100%;
       padding: 10px;
-      border-radius: 8px;
+      margin-top: 5px;
+      border-radius: 6px;
       border: none;
-      background: rgba(255,255,255,0.06);
-      color: var(--text);
-      outline: none;
+      background: #f4f4f4;
+      color: #000;
     }
-    textarea { min-height: 120px; resize: vertical }
-    .field { margin-bottom: 14px }
-    .small { font-size: 0.85rem; color: #cfcfcf }
-    .images-preview {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #e63946;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
     }
     .thumb {
-      width: 80px;
-      height: 80px;
-      border-radius: 6px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
-      border: 2px solid rgba(255,255,255,0.08);
-    }
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 10px 14px;
+      margin: 10px 10px 0 0;
       border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-weight: 700;
+      border: 2px solid #fff;
     }
-    .btn.secondary {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-    .meta { font-size: 0.9rem; color: #ddd; margin-top: 8px }
-    .status { margin-top: 12px; font-weight: 600 }
-    footer {
-      margin-top: 18px;
-      color: #bbb;
-      font-size: 0.9rem;
-      text-align: center;
+    .info-block {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
+  <div class="overlay">
+    <h1>🎶 Maki Bend - Rezervacija</h1>
 
-  <main class="wrap">
-    <header>
-      <div class="logo">MB</div>
-      <div>
-        <h1>Maki Bend — Kontakt / Booking</h1>
-        <p class="lead">Pošaljite nam poruku za nastupe, saradnju ili pitanja. Možete dodati slike benda i podatke o glavnom muzičaru.</p>
-      </div>
-    </header>
+    <!-- Prvi deo forme -->
+    <section id="step1">
+      <h2>📩 Pošaljite upit</h2>
+      <label for="userName">Vaše ime</label>
+      <input type="text" id="userName" required />
 
-    <form id="contactForm" class="card">
-      <div>
-        <div class="field">
-          <label for="bandName">Naziv benda</label>
-          <input id="bandName" required />
-        </div>
-        <div class="field">
-          <label for="senderName">Vaše ime</label>
-          <input id="senderName" required />
-        </div>
-        <div class="field">
-          <label for="senderEmail">Vaš mejl</label>
-          <input id="senderEmail" type="email" required />
-        </div>
-        <div class="field">
-          <label for="message">Poruka</label>
-          <textarea id="message" required></textarea>
-        </div>
-        <div class="field">
-          <label for="images">Slike benda</label>
-          <input id="images" type="file" multiple accept="image/*" />
-          <div id="previews" class="images-preview"></div>
-        </div>
-      </div>
-      <aside>
-        <div class="card">
-          <div class="field">
-            <label for="leadName">Glavni muzičar</label>
-            <input id="leadName" required />
-          </div>
-          <div class="field">
-            <label for="leadPhone">Telefon</label>
-            <input id="leadPhone" required />
-          </div>
-          <div class="field">
-            <label for="location">Lokacija</label>
-            <input id="location" required />
-          </div>
-          <button type="button" class="btn" id="sendBtn">Pošalji poruku</button>
-          <div class="status" id="status"></div>
-        </div>
-      </aside>
-    </form>
+      <label for="userEmail">Vaš email</label>
+      <input type="email" id="userEmail" required />
 
-    <!-- Pregled unetih podataka -->
-    <section id="previewArea" class="card" style="margin-top:30px;display:none">
-      <h2>📸 Pregled unetih podataka</h2>
-      <p><strong>Glavni muzičar:</strong> <span id="previewLeadName"></span></p>
-      <p><strong>Telefon:</strong> <span id="previewPhone"></span></p>
-      <p><strong>Lokacija:</strong> <span id="previewLocation"></span></p>
-      <p><strong>Bend:</strong> <span id="previewBandName"></span></p>
-      <div><strong>Slike benda:</strong>
-        <div id="previewImages" class="images-preview"></div>
-      </div>
+      <label for="userMessage">Poruka</label>
+      <textarea id="userMessage" rows="4" required></textarea>
+
+      <button id="continueBtn">Nastavi</button>
     </section>
 
-    <footer>© Maki Bend • 2025</footer>
-  </main>
+    <!-- Drugi deo stranice - podaci o bendu -->
+    <section id="step2" style="display:none">
+      <h2>✅ Detalji o bendu</h2>
+
+      <div class="info-block">
+        <p><strong>Vaše ime:</strong> <span id="previewName"></span></p>
+        <p><strong>Email:</strong> <span id="previewEmail"></span></p>
+        <p><strong>Poruka:</strong> <span id="previewMessage"></span></p>
+      </div>
+
+      <div class="info-block">
+        <p><strong>Glavni muzičar:</strong> Marcel</p>
+        <p><strong>Telefon:</strong> +381 64 123 4567</p>
+        <p><strong>Lokacija:</strong> Beograd, Srbija</p>
+        <p><strong>Članovi benda:</strong></p>
+        <ul>
+          <li>Marcel – Vokal, klavijatura</li>
+          <li>Ivana – Violina</li>
+          <li>Stefan – Bubnjevi</li>
+          <li>Marko – Gitara</li>
+        </ul>
+      </div>
+
+      <p><strong>Slike benda:</strong></p>
+      <div>
+        <img src="images/bend1.jpg" alt="Bend slika 1" class="thumb">
+        <img src="images/bend2.jpg" alt="Bend slika 2" class="thumb">
+        <img src="images/bend3.jpg" alt="Bend slika 3" class="thumb">
+      </div>
+    </section>
+  </div>
 
   <script>
-    const sendBtn = document.getElementById('sendBtn');
-    const imagesInput = document.getElementById('images');
-    const previews = document.getElementById('previews');
+    document.getElementById('continueBtn').addEventListener('click', () => {
+      const name = document.getElementById('userName').value.trim();
+      const email = document.getElementById('userEmail').value.trim();
+      const message = document.getElementById('userMessage').value.trim();
 
-    let selectedImages = [];
+      if (!name || !email || !message) {
+        alert('Molimo popunite sva polja.');
+        return;
+      }
 
-    imagesInput.addEventListener('change', () => {
-      previews.innerHTML = '';
-      selectedImages = Array.from(imagesInput.files);
-      selectedImages.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const img = document.createElement('img');
-          img.src = reader.result;
-          img.className = 'thumb';
-          previews.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      });
+      // Popuni podatke na drugoj strani
+      document.getElementById('previewName').textContent = name;
+      document.getElementById('previewEmail').textContent = email;
+      document.getElementById('previewMessage').textContent = message;
+
+      // Sakrij prvu sekciju, prikaži drugu
+      document.getElementById('step1').style.display = 'none';
+      document.getElementById('step2').style.display = 'block';
     });
-
-    sendBtn.addEventListener('click', () => {
-      const bandName = document.getElementBy
-
+  </script>
+</body>
+</html>
